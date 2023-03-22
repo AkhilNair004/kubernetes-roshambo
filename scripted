@@ -1,0 +1,13 @@
+node {
+    stage('download') {
+    git 'https://github.com/Ruturaj-github/pipeline.git'
+}
+    stage('build') {
+    sh 'mvn package'
+}
+    stage('deploy') {
+    sshagent(['ec2-user']) {
+   sh 'scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/Pipeline-project/target/*.war ec2-user@18.210.10.252:///opt/tomcat9/webapps/'
+}
+ } 
+}
