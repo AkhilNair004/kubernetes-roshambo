@@ -5,9 +5,23 @@ node {
     stage('build') {
     sh 'mvn package'
 }
-    stage('deploy') {
+    stage('copy war') {
     sshagent(['ec2-user']) {
-   sh 'scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/Pipeline-project/target/*.war ec2-user@18.210.10.252:///opt/tomcat9/webapps/'
+   sh 'scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/Pipeline-project/target/*.war ec2-user@172.31.61.189:///home/ec2-user/'
 }
- } 
 }
+ stage('Docker Build') {
+     sshagent(['ec2-user']) {
+      	sh 'ssh -T ec2-user@172.31.61.189 docker build -t roshambo-image .'
+         }
+ }
+ stage('Docker Run') {
+      sshagent(['ec2-user']) {
+      	sh 'ssh -T ec2-user@172.31.61.189 docker rm -f roshmabo-container'
+        sh 'ssh -T ec2-user@172.31.61.189 docker run -d --name roshmabo-container -p 8081:8080 roshambo-image'
+ 
+          
+      }
+}
+     
+ }
