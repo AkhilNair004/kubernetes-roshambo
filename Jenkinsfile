@@ -23,7 +23,9 @@ stage ('Send Email') {
          body: "This is body";
     }
      stage('Deployment to Test Env ') {
-                   input message: 'Waiting For Approval ', submitter: 'Admin'
+                  slackSend channel: 'aws', message: 'Please Approve'
+         input message: 'Waiting For Approval ', submitter: 'Admin'
+         slackSend channel: 'aws', message: 'Sucessfully Deployed'
                   sshagent(['ec2-user']) {
      sh 'ssh -o StrictHostKeyChecking=no ec2-user@13.235.17.205 docker rm -f roshambo-container || true '
      sh 'ssh -o StrictHostKeyChecking=no ec2-user@13.235.17.205 docker run -d -p 8080:8080 --name roshambo-container akhilnair004/roshambo:latest '
