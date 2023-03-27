@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: roshambodevelopment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: roshambo
+  strategy:
+    type: Recreate    
+  template:
+    metadata:
+      name: roshambopod
+      labels:
+        app: roshamboapp
+    spec:
+      containers:
+      - name: roshambo-container
+        image: akhilnair004/roshambo:latest
+        ports:
+        - containerPort: 8080
