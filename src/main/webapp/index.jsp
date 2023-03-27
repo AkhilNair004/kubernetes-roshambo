@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>Welcome to game Rock Paper Scissors!!!</title>																																																						<html>
+<title>HI Welcome to game Rock Paper Scissors!!!</title>																																																						<html>
 </head>
 
    <body>
