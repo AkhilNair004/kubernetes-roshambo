@@ -16,10 +16,7 @@ node {
   withCredentials([string(credentialsId: 'DockerHub_Credentials', variable: 'Dockerhub')]) {
    sh 'docker login -u vyomlabs -p ${DockerHub_Credentials}'
 }
-      
-}
-        
-   sh 'docker push vyomlabs/roshambo:latest '
+    sh 'docker push vyomlabs/roshambo:latest '   
 }
     stage('Deployment Kubernetes cluster ') {
             sshagent(['ubuntu']) {
