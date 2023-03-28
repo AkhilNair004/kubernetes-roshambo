@@ -19,7 +19,6 @@ node {
    sh 'docker push akhilnair004/roshambo:latest '
 }
     
-}
     stage('Deployment Kubernetes cluster ') {
             sshagent(['ubuntu']) {
      sh 'ssh -o StrictHostKeyChecking=no ubuntu@13.232.60.177 kubectl apply -f roshambo.yml '
