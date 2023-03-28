@@ -1,6 +1,6 @@
 node {
     properties([
-    buildDiscarder(logRotator(daysToKeepStr: '1', numToKeepStr: '2')),
+    buildDiscarder(logRotator(daysToKeepStr: '1', numToKeepStr: '1')),
 ])
         stage('Source Code Download') {
     git 'https://github.com/AkhilNair004/roshambo.git'
