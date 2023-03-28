@@ -29,8 +29,8 @@ node {
       withAWS(credentials:'AWSCredentialsForSnsPublish'){
                 snsPublish(
                     topicArn:'arn:aws:sns:ap-south-1:312519541424:Approval-Pending-Request', 
-                    subject:"Approval Pending with Atish Kulkarni", 
-                    message: "Hi Atish Kulkarni , Please approve the request for deployment into Kubernetes cluster for build $BUILD_NUMBER"
+                    subject:"Approval Pending for Build-id  $BUILD_ID ", 
+                    message: "Hi Atish Kulkarni , Please approve the request for build-number BUILD-NUMBER and BUILD-ID $BUILD_ID "
                     )           
       }
   }
