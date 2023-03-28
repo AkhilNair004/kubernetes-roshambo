@@ -25,8 +25,8 @@ node {
      sh 'ssh -o StrictHostKeyChecking=no ubuntu@13.232.60.177 kubectl apply -f roshambo.yml '
      
 }
+    }
   stage('Publish SNS') {
-         
             echo 'Publishing SNS message to AWS'
       withAWS(credentials:'AWSCredentialsForSnsPublish'){
                 snsPublish(
