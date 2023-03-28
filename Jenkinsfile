@@ -12,9 +12,10 @@ node {
     stage('Docker Image') {
     sh 'docker build -t akhilnair004/roshambo:latest .'
 }
-    stage('Docker Login & Push') {
+   stage('Docker Login & Push') {
  withCredentials([string(credentialsId: 'docker-pwd', variable: 'dockerpwd')]) {
     sh 'docker login -u akhilnair004 -p ${dockerpwd}'
 }
-    }
+   sh 'docker push akhilnair004/roshambo:latest '
+}
 }
