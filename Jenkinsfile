@@ -18,18 +18,8 @@ node {
 }
    sh 'docker push akhilnair004/roshambo:latest '
 }
-    stage('Approval ') {
-         
-        echo 'Publishing SNS message to AWS'
-        withAWS(credentials:'AWSCredentialsForSnsPublish'){
-                snsPublish(
-                    topicArn:'arn:aws:sns:ap-south-1:312519541424:Approval-Pending-Request', 
-                    subject:"Approval Pending for $JOB_NAME & build-id $BUILD_ID ", 
-                    message: "Hi Team , Please approve the request for Job Name $JOB_NAME & build-id $BUILD_ID  "
-                    )
-      }
-        input message: 'Approval Pending ', submitter: 'Admin'
-  }
+    
+}
     stage('Deployment Kubernetes cluster ') {
             sshagent(['ubuntu']) {
      sh 'ssh -o StrictHostKeyChecking=no ubuntu@13.232.60.177 kubectl apply -f roshambo.yml '
