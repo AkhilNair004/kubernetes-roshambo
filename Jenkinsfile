@@ -10,11 +10,11 @@ node {
     sh 'mvn package'
 }
     stage('Docker Image') {
-    sh 'docker build -t akhilnair004/roshambo:latest .'
+    sh 'docker build -t vyomlabs/roshambo:latest .'
 }
    stage('Docker Login & Push') {
- withCredentials([string(credentialsId: 'docker-pwd', variable: 'dockerpwd')]) {
-    sh 'docker login -u akhilnair004 -p ${dockerpwd}'
+ withCredentials([string(credentialsId: 'vyomlabs-docker', variable: 'vyomlabs-docker')]) {
+    sh 'docker login -u vyomlabs -p ${vyomlabs-docker}'
 }
    sh 'docker push akhilnair004/roshambo:latest '
 }
