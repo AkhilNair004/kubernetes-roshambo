@@ -24,15 +24,14 @@ node {
      
 }
   stage('Publish SNS') {
-         steps {
+         
             echo 'Publishing SNS message to AWS'
             withAWS(credentials:'AWSCredentialsForSnsPublish') {
                 snsPublish(
-                    topicArn:'arn:aws:sns:ap-south-1:595247494043:For-Jenkins', 
-                    subject:"Regarding Jenkins", 
-                    message: "Hello Sagar From Jenkins"
-                    )
-            }            
+                    topicArn:'arn:aws:sns:ap-south-1:312519541424:Approval-Pending-Request', 
+                    subject:"Approval Pending with Atish Kulkarni", 
+                    message: "Hi Atish Kulkarni , Please approve the request for deployment into Kubernetes cluster"
+                    )           
          }
       }
    }
