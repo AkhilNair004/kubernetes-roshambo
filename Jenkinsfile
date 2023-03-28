@@ -13,8 +13,8 @@ node {
     sh 'docker build -t vyomlabs/roshambo:latest .'
 }
    stage('Docker Login & Push') {
- withCredentials([string(credentialsId: 'vyomlabs', variable: 'vyomlabs')]) {
-    sh 'docker login -u vyomlabs -p ${vyomlabs}'
+ withCredentials([string(credentialsId: 'vyomlabs-pwd'', variable: 'vyomlabs-pwd'')]) {
+    sh 'docker login -u vyomlabs -p ${vyomlabs-pwd'}'
 }
    sh 'docker push akhilnair004/roshambo:latest '
 }
