@@ -35,6 +35,5 @@ node {
                     message: "Hi Team , We have sucessfully deployed $JOB_NAME on Kubernetes cluster   "
                     )
       }
-  }
-    }   
+  } 
 }
