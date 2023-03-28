@@ -23,6 +23,13 @@ node {
      sh 'ssh -o StrictHostKeyChecking=no ubuntu@13.232.60.177 kubectl apply -f roshambo.yaml '
      
 }
-
+ stage('Publish SNS') {
+                         snsPublish(
+                    topicArn:'arn:aws:sns:ap-south-1:312519541424:Approval-Pending-Request', 
+                    subject:"Approval Pending with Atish Kulkarni", 
+                    message: "Hello Atish Kulkarni Appoval pending"
+                    )
+            }            
+       
 }
-}
+    
