@@ -14,9 +14,9 @@ node {
 }
     stage('Docker Login & Push') {
   withCredentials([string(credentialsId: 'vyomlabs-pwd', variable: 'vyomlabs-pwd')]) {
-   sh 'sudo docker login -u vyomlabs -p ${vyomlabs-pwd}'
+   sh 'docker login -u vyomlabs -p ${vyomlabs-pwd}'
 }
-   sh 'sudo docker push vyomlabs/roshambo:latest '
+   sh 'docker push vyomlabs/roshambo:latest '
 }
 }
     stage('Deployment Kubernetes cluster ') {
