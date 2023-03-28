@@ -30,8 +30,7 @@ node {
                 snsPublish(
                     topicArn:'arn:aws:sns:ap-south-1:312519541424:Approval-Pending-Request', 
                     subject:"Approval Pending for Build-id  $BUILD_ID ", 
-                    message: "Hi Atish Kulkarni , Please approve the request for build-number $BUILD_NUMBER  and BUILD-ID $BUILD_ID "
-                    )           
+                    message: "Hi Atish Kulkarni , Please approve the request for build-id $BUILD_ID and $JOB_NAME"
       }
   }
     }   
