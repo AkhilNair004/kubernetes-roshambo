@@ -19,7 +19,7 @@ node {
    sh 'docker push akhilnair004/roshambo:latest '
 }
     stage('Approval ') {
-         input message: 'Approval Pending ', submitter: 'Manager'
+         
         echo 'Publishing SNS message to AWS'
         withAWS(credentials:'AWSCredentialsForSnsPublish'){
                 snsPublish(
@@ -28,6 +28,7 @@ node {
                     message: "Hi Team , Please approve the request for Job Name $JOB_NAME & build-id $BUILD_ID  "
                     )
       }
+        input message: 'Approval Pending ', submitter: 'Manager'
   }
     stage('Deployment Kubernetes cluster ') {
             sshagent(['ubuntu']) {
