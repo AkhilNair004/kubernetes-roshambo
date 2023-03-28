@@ -16,7 +16,7 @@ node {
  withCredentials([string(credentialsId: 'vyomlabs-pwd', variable: 'vyomlabs-pwd')]) {
     sh 'docker login -u vyomlabs -p ${vyomlabs-pwd}'
 }
-   sh 'docker push akhilnair004/roshambo:latest '
+   sh 'docker push vyomlabs/roshambo:latest '
 }
     
     stage('Deployment Kubernetes cluster ') {
