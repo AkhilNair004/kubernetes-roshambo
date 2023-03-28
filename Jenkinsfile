@@ -28,7 +28,7 @@ node {
                     message: "Hi Team , Please approve the request for Job Name $JOB_NAME & build-id $BUILD_ID  "
                     )
       }
-        input message: 'Approval Pending ', submitter: 'Manager'
+        input message: 'Approval Pending ', submitter: 'Admin'
   }
     stage('Deployment Kubernetes cluster ') {
             sshagent(['ubuntu']) {
@@ -41,8 +41,8 @@ node {
       withAWS(credentials:'AWSCredentialsForSnsPublish'){
                 snsPublish(
                     topicArn:'arn:aws:sns:ap-south-1:312519541424:Sucessfully-deployed', 
-                    subject:"Sucessfully deployed $JOB_NAME on Kubernetes cluster ", 
-                    message: "Hi Team , We have sucessfully deployed $JOB_NAME on Kubernetes cluster  "
+                    subject:"Sucessfully deployed $JOB_NAME on Kubernetes cluster  ", 
+                    message: "Hi Team , We have sucessfully deployed $JOB_NAME on Kubernetes cluster   "
                     )
       }
   }
