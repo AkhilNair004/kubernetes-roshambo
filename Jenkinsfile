@@ -32,8 +32,8 @@ node {
                 snsPublish(
                     topicArn:'arn:aws:sns:ap-south-1:312519541424:Sucessfully-deployed', 
                     subject:"Sucessfully deployed $JOB_NAME on Kubernetes cluster  ", 
-                    message: "Hi Team , We have sucessfully deployed $JOB_NAME on Kubernetes cluster   "
+                    message: "Hi Team , We have sucessfully deployed $JOB_NAME on Kubernetes cluster "
+                    }
                     )
-      }
-  } 
 }
+  }
