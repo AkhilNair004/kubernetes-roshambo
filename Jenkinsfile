@@ -9,4 +9,7 @@ node {
   stage('Source Build') {
     sh 'mvn package'
 }
+    stage('Docker Image') {
+    sh 'docker build -t akhilnair004/roshambo:latest .'
+}
 }
