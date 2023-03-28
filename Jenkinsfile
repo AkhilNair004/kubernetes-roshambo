@@ -14,7 +14,7 @@ node {
 }
     stage('Docker Login & Push') {
   withCredentials([string(credentialsId: 'DockerHub_Credentials', variable: 'Dockerhub')]) {
-   sh 'docker login -u vyomlabs -p${DockerHub_Credentials}'
+   sh 'docker login -u vyomlabs -p ${Dockerhub}'
 }
     sh 'docker push vyomlabs/roshambo:latest '   
 }
