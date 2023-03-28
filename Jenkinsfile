@@ -12,12 +12,13 @@ node {
     stage('Docker Image') {
     sh 'docker build -t vyomlabs/roshambo:latest .'
 }
+    stage('Docker Login & Push') {
   withCredentials([string(credentialsId: 'vyomlabs-pwd', variable: 'vyomlabs-pwd')]) {
    sh 'docker login -u vyomlabs -p ${vyomlabs-pwd}'
 }
    sh 'docker push vyomlabs/roshambo:latest '
 }
-    
+}
     stage('Deployment Kubernetes cluster ') {
             sshagent(['ubuntu']) {
      sh 'ssh -o StrictHostKeyChecking=no ubuntu@13.232.60.177 kubectl apply -f roshambo.yml '
