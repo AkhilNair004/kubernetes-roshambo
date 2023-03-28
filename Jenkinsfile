@@ -16,4 +16,5 @@ node {
  withCredentials([string(credentialsId: 'docker-pwd', variable: 'dockerpwd')]) {
     sh 'docker login -u akhilnair004 -p ${dockerpwd}'
 }
+    }
 }
