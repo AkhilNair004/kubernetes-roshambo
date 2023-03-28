@@ -28,8 +28,7 @@ node {
                     topicArn:'arn:aws:sns:ap-south-1:312519541424:Approval-Pending-Request', 
                     subject:"Approval Pending with Atish Kulkarni", 
                     message: "Hello Atish Kulkarni Appoval pending"
-                    )
-            }            
+                    )            
        
 }
     
