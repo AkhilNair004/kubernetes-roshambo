@@ -22,7 +22,7 @@ node {
     stage('Deployment Kubernetes cluster ') {
         kubernetesDeploy(
             configs:'roshambo.yaml',
-            kuberconfigId:'Kubernetes_cluster_config',
+            kubeconfigId:'Kubernetes_cluster_config',
             enableConfigSubsitution: true    
         )
     }
