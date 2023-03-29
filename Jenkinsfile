@@ -23,7 +23,8 @@ node {
         kubernetesDeploy(
             configs:'roshambo.yaml',
             kubeconfigId:'Kubernetes_cluster_config',
-            deleteResource: true   
+            deleteResource: true,
+            enableConfigSubsitution: true 
         )
     }
   stage('Publish SNS') {
