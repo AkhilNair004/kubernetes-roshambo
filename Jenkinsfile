@@ -20,11 +20,11 @@ node {
 }
    
     stage('Deployment Kubernetes cluster ') {
-        kubernetesDeploy{
+        kubernetesDeploy(
             configs:'roshambo.yaml',
             kuberconfigId:'Kubernetes_cluster_config',
             enableConfigSubsitution: true    
-        }
+        )
     }
   stage('Publish SNS') {
             echo 'Publishing SNS message to AWS'
