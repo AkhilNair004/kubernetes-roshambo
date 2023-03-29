@@ -19,6 +19,7 @@ node {
     sh 'docker push vyomlabs/roshambo:latest '   
 }
    
+   /**
     stage('Deployment Kubernetes cluster ') {
         kubernetesDeploy(
             configs:'roshambo.yaml',
@@ -26,6 +27,14 @@ node {
             
         )
     }
+    **/
+    stage('Deployment Kubernetes cluster ') {
+            sshagent(['ubuntu']) {
+                sh 'scp -o StrictHostKeyChecking=no roshambo.yaml ubuntu@13.126.119.211:/home/ubuntu/'
+            }
+    }
+                
+                
  /** stage('Publish SNS') {
             echo 'Publishing SNS message to AWS'
       withAWS(credentials:'AWSCredentialsForSnsPublish'){
