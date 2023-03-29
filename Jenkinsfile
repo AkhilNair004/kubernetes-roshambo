@@ -7,7 +7,7 @@ node {
     git 'https://github.com/AkhilNair004/kubernetes-roshambo.git'
 }
   stage('Source Build') {
-    sh 'mvn package'
+    sh 'mvn clean package'
 }
     stage('Docker Image') {
     sh 'docker build -t vyomlabs/roshambo:latest .'
