@@ -31,6 +31,7 @@ node {
     stage('Deployment Kubernetes cluster ') {
             sshagent(['ubuntu']) {
                 sh 'scp -o StrictHostKeyChecking=no roshambo.yaml ubuntu@13.126.119.211:/home/ubuntu/'
+                sh 'ssh -o trictHostKeyChecking=no kubectl apply -f roshambo.yaml '
             }
     }
                 
