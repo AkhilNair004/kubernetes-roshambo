@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: roshambo-deployment
 spec:
-  startergy:
+  strategy:
     type: Recreate
   replicas: 2
   selector:
