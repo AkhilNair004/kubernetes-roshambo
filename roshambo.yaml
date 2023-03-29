@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: roshambo-container
-        image: akhilnair004/roshambo:latest
+        image: vyomlabs/roshambo:latest
         ports:
         - containerPort: 8080
 ---
@@ -28,6 +28,6 @@ spec:
  ports:
  - port: 8080
    targetPort: 8080
+   nodePort: 30007
  selector:
    app: roshamboapp
-
