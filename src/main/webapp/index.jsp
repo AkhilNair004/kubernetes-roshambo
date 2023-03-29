@@ -1,11 +1,11 @@
 <html>
 <head>
-<title>Let play the game !!!</title>																																																						<html>
+<title>Let play the game AWS team!!!</title>																																																						<html>
 </head>
 
    <body>
 
-     Hi Team  lets play the game and enjoy <br/>
+     Hi AWS Team  lets play the game and enjoy <br/>
       <a href="#" onclick="playRoshambo('rock')"> rock </a>
       <a href="#" onclick="playRoshambo('paper')"> paper </a>
       <a href="#" onclick="playRoshambo('scissors')"> scissors </a>
