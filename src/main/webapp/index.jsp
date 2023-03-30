@@ -5,7 +5,7 @@
 
    <body>
 
-     Hi AWS Team  lets play the game and enjoy <br/>
+      Lets play the game and enjoy <br/>
       <a href="#" onclick="playRoshambo('rock')"> rock </a>
       <a href="#" onclick="playRoshambo('paper')"> paper </a>
       <a href="#" onclick="playRoshambo('scissors')"> scissors </a>
