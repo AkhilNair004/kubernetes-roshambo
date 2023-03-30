@@ -38,7 +38,7 @@ node {
     }
                 
                 
- /** stage('Publish SNS') {
+  stage('Publish SNS') {
             echo 'Publishing SNS message to AWS'
       withAWS(credentials:'AWSCredentialsForSnsPublish'){
                 snsPublish(
@@ -47,5 +47,5 @@ node {
                     message: "Hi Team , We have sucessfully deployed $JOB_NAME on Kubernetes cluster"
                     )
       }
-} **/
+} 
 }
