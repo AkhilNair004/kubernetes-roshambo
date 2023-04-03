@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: roshambo-container
-        image: vyomlabs/roshambo:latest
+        image: vyomlabs/roshambo:v1
         ports:
         - containerPort: 8080
 ---
