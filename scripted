@@ -1,27 +1,37 @@
 node {
-    stage('download') {
-    git 'https://github.com/Ruturaj-github/pipeline.git'
+    
+    properties([
+    buildDiscarder(logRotator(daysToKeepStr: '1', numToKeepStr: '1')),
+])
+        stage('Source Code Download') {
+    git 'https://github.com/AkhilNair004/kubernetes-roshambo.git'
 }
-    stage('build') {
+  stage('Source Build') {
     sh 'mvn package'
 }
-    stage('copy war') {
-    sshagent(['ec2-user']) {
-   sh 'scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/Pipeline-project/target/*.war ec2-user@172.31.61.189:///home/ec2-user/'
+    stage('Docker Image') {
+    sh 'docker build -t vyomlabs/roshambo:latest .'
 }
+    stage('Docker Login & Push') {
+  withCredentials([string(credentialsId: 'DockerHub_Credentials', variable: 'Dockerhub')]) {
+   sh 'docker login -u vyomlabs -p ${Dockerhub}'
 }
- stage('Docker Build') {
-     sshagent(['ec2-user']) {
-      	sh 'ssh -T ec2-user@172.31.61.189 docker build -t roshambo-image .'
-         }
- }
- stage('Docker Run') {
-      sshagent(['ec2-user']) {
-      	sh 'ssh -T ec2-user@172.31.61.189 docker rm -f roshmabo-container'
-        sh 'ssh -T ec2-user@172.31.61.189 docker run -d --name roshmabo-container -p 8081:8080 roshambo-image'
- 
-          
+    sh 'docker push vyomlabs/roshambo:latest '   
+}
+    stage('Deployment Kubernetes cluster ') {
+            sshagent(['ubuntu']) {
+     sh 'ssh -o StrictHostKeyChecking=no ubuntu@13.126.119.211 kubectl apply -f roshambo.yaml '
+     
+}
+    }
+  stage('Publish SNS') {
+            echo 'Publishing SNS message to AWS'
+      withAWS(credentials:'AWSCredentialsForSnsPublish'){
+                snsPublish(
+                    topicArn:'arn:aws:sns:ap-south-1:312519541424:Sucessfully-deployed', 
+                    subject:"Sucessfully deployed $JOB_NAME on Kubernetes cluster  ", 
+                    message: "Hi Team , We have sucessfully deployed $JOB_NAME on Kubernetes cluster"
+                    )
       }
 }
-     
- }
+}
