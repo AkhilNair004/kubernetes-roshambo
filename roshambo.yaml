@@ -17,6 +17,7 @@ spec:
       containers:
       - name: roshambo-container
         image: vyomlabs/roshambo:latest
+        imagePullPolicy: "Always"
         ports:
         - containerPort: 8080
 ---
