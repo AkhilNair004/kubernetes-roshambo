@@ -5,7 +5,7 @@
 
    <body>
 
-      Hi Pratik Let play the game !!! <br/>
+      Hi Agheel Let play the game !!! <br/>
       <a href="#" onclick="playRoshambo('rock')"> rock </a>
       <a href="#" onclick="playRoshambo('paper')"> paper </a>
       <a href="#" onclick="playRoshambo('scissors')"> scissors </a>
