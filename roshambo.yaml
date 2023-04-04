@@ -1,3 +1,10 @@
+apiVersion:v1
+kind:ConfigMap
+metadata:
+  name: my-configmap
+data:
+  build_number:$BUILD_NUMBER
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -19,7 +26,13 @@ spec:
     spec:
       containers:
       - name: roshambo-container
-        image: vyomlabs/roshambo:95
+        image: vyomlabs/roshambo:$(configMap:my-configmap.build_number)
+        env:
+          - name:BUILD_NUMBER
+            vailueFrom:
+              configMapKeyRef:
+                name: my-configmap
+                key: build_number
         ports:
         - containerPort: 8080
 ---
@@ -36,3 +49,5 @@ spec:
    nodePort: 30007
  selector:
    app: roshamboapp
+
+---
