@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
       - name: roshambo-container
-        image: accscient/project1:130
+        image: accscient/project1:132
         ports:
         - containerPort: 8080
 ---
