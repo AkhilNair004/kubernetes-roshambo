@@ -20,7 +20,6 @@ spec:
     matchLabels:
       app: roshamboapp
   template:
-    metadata:
     spec:
       containers:
       - name: roshambo-container
