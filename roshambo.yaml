@@ -21,8 +21,6 @@ spec:
       app: roshamboapp
   template:
     metadata:
-      labels:
-        app: roshamboapp
     spec:
       containers:
       - name: roshambo-container
